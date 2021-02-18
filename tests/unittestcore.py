@@ -12,8 +12,7 @@ class BaseUnitTest(unittest.TestCase):
         os.environ["TARGET_BIGQUERY_STATE_FILE"] = "state.json.tmp"
         self.delete_temp_state()
 
-        os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = os.path.normpath(
-            os.path.join(os.path.dirname(__file__), "..", "sandbox", "sa.json"))
+        os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = json.loads(os.getenv('GOOGLE_APPLICATION_CREDENTIALS'))
 
         self.client = None
         self.project_id = None
